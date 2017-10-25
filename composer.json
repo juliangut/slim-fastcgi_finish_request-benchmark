@@ -1,0 +1,30 @@
+{
+    "name": "juliangut/slim-fastcgi_finish_request-benchmark",
+    "description": "Slim Framework 3 fastcgi_finish_request benchmark",
+    "keywords": ["microframework", "rest", "router", "psr7"],
+    "homepage": "http://github.com/slimphp/Slim-Skeleton",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Julián Gutiérrez",
+            "email": "juliangut@gmail.com",
+            "homepage": "http://www.juliangut.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "slim/slim": "^3.1",
+        "slim/php-view": "^2.0",
+        "monolog/monolog": "^1.17"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4.8 < 6.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jgut\\Slim\\Benchmark\\": "src/"
+        }
+    },
+    "scripts": {
+    }
+}

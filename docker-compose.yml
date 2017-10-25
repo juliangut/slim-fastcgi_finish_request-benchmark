@@ -1,0 +1,35 @@
+version: "2"
+
+services:
+  nginx:
+    container_name: benchmark_nginx
+    image: nginx:1-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/vhosts:/etc/nginx/conf.d
+      - ./docker/log/nginx:/var/log/nginx
+    volumes_from:
+      - data
+    links:
+      - fpm
+
+  fpm:
+    container_name: benchmark_fpm
+    image: juliangut/phpdev:7.1-fpm
+    expose:
+      - 9001
+    environment:
+      XDEBUG_REMOTE_PORT: 9001
+      PHP_IDE_CONFIG: serverName=benchmark
+    volumes:
+      - ./docker/log/php:/var/log/php
+    volumes_from:
+      - data
+
+  data:
+    container_name: benchmark_data
+    image: busybox
+    volumes:
+      - .:/var/www/benchmark
